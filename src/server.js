@@ -12,11 +12,11 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.static("public"));
 
 // Serve static files (like index.html, CSS, JS)
-app.use(express.static(path.join(__dirname, "..", public")));
+app.use(express.static(path.join(__dirname, public")));
 
 // Serve index.html when visiting root route
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 const pool = new Pool({
