@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.static("public"));
 
-// Serve static files (like index.html, CSS, JS)
+// Serve static files
 app.use(express.static(path.join(__dirname, "../public")));
 
 // Serve index.html when visiting root route
@@ -24,9 +24,8 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 });
 
-// Correct route
 app.post("/submit", async (req, res) => {
-  const { username, pwd } = req.body; // match your form fields
+  const { username, pwd } = req.body;
 
   try {
     await pool.query(
