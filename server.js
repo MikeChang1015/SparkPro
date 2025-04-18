@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { Pool } = require("pg");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -8,7 +9,15 @@ const port = process.env.PORT || 5432;
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+// app.use(express.static("public"));
+
+// Serve static files (like index.html, CSS, JS)
+app.use(express.static(path.join(__dirname, "public")));
+
+// Serve index.html when visiting root route
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
