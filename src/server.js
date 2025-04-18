@@ -5,7 +5,7 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 5432;
+const port = process.env.PORT || 5432; // run localhost:5432 for localhost and before that input node src/server.js at terminal
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
