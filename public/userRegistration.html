@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>User Registration Page</title>
+		<style>
+			<!-- HTML CSS put here -->
+			#pwdWarning {
+				color: red;
+				font-size: 0.9em;
+				display: none;
+			}
+		</style>
+		<script>
+			function checkPasswords() 
+			{
+				const pwd = document.getElementById ("pwd").value;
+				const cfmpwd = document.getElementById ("cfmpwd").value;
+				const warning = document.getElementById ("warningpwd");
+				
+				if (pwd !== cfmpwd) 
+				{
+					warning.innerHTML = "Password and Confirmed Password are not the same";
+					return false; // Prevent submission
+				} 
+			}
+			
+			function resetSpan()
+			{
+				document.getElementById ("warningpwd").innerHTML = "";
+			}
+		</script>
+	</head>
+  
+	<body>
+		<h2>New User Registration</h2>	<!-- The top title of the page -->
+		
+		<form action="/submit" method="POST" onsubmit="return checkPasswords();">
+			<label><b> Enter Username: </b></label>
+			<input type="text" name="username" id="username" placeholder="Enter your username" required /><br><br>
+			<label><b> Enter Password: </b></label>
+			<input type="password" name="password" id="pwd" placeholder="Enter your password" required /><br><br>
+			<label><b> Confirmed Password: </b></label>
+			<input type="password" name="confirmedPassword" id="cfmpwd" placeholder="Enter password again" required />
+			<span id="warningpwd" style="color: red; font-weight: bold;"> </span> <br><br>
+			<button type="submit">Register</button>&nbsp;&nbsp;
+			<button type="reset" onclick="resetSpan ()">Clear</button>
+		</form>
+	</body>
+</html>
