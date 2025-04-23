@@ -4,6 +4,7 @@ const path = require("path");
 
 // Handle User Login
 const { handleLogin } = require ("./control/loginHandler");
+const { handleRegister } = require("./control/registerHandler");
 
 const app = express();
 const port = process.env.PORT || 5432;
@@ -31,5 +32,6 @@ const pool = new Pool({
 });
 
 app.post("/login", handleLogin);
+app.post("/submit", handleRegister);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
