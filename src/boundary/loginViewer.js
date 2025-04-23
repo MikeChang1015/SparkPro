@@ -1,4 +1,4 @@
-// src/boundary/loginController.js
+// src/boundary/loginViewer.js
 
 const User = require("../entity/User");	// import "User" entity from the domain layer
 

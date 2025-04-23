@@ -1,4 +1,4 @@
-// src/boundary/registerController.js
+// src/boundary/registerViewer.js
 
 const User = require("../entity/User");
 

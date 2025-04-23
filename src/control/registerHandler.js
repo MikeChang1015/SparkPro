@@ -1,6 +1,6 @@
 // src/control/registerHandler.js
 
-const { register } = require("../boundary/registerController");
+const { register } = require("../boundary/registerViewer");
 
 // below line for debug 
 // console.log("registerController:", require("../boundary/registerController"));
