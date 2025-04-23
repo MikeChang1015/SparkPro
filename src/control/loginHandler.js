@@ -4,7 +4,7 @@
 // It also delegate the actual authentication logic to the boundary
 // And translate the boundary response into appriopriate HTTP 
 
-const { login } = require("../boundary/loginController");	// To import the login function from boundary
+const { login } = require("../boundary/loginViewer");	// To import the login function from boundary
 
 // Handle HTTP request and response
 const handleLogin = async (req, res) => {
