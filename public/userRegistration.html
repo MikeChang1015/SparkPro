@@ -10,6 +10,10 @@
 				font-size: 0.9em;
 				display: none;
 			}
+			
+			.role-section {
+			  display: none;
+			}
 		</style>
 		<script>
 			function checkPasswords() 
@@ -25,9 +29,30 @@
 				} 
 			}
 			
-			function resetSpan()
+			function resetForm() {
+				// Hide both role sections
+				document.getElementById("cleaner-fields").style.display = "none";
+				document.getElementById("homeowner-fields").style.display = "none";
+	
+				// Uncheck radio buttons
+				document.querySelectorAll('input[name="role"]').forEach(el => el.checked = false);
+	
+				// Remove role-specific required attributes
+				document.querySelectorAll('.cleaner-required, .homeowner-required').forEach(el => el.required = false);
+	
+				// Clear password warning
+				document.getElementById("pwdWarning").innerHTML = "";
+			}
+			
+			function toggleRoleFields() 
 			{
-				document.getElementById ("warningpwd").innerHTML = "";
+				const role = document.querySelector('input[name="role"]:checked').value;
+				document.getElementById("cleaner-fields").style.display = role === "Cleaner" ? "block" : "none";
+				document.getElementById("homeowner-fields").style.display = role === "HomeOwner" ? "block" : "none";
+	
+				// Toggle 'required' dynamically
+				document.querySelectorAll('.cleaner-required').forEach(el => el.required = (role === "Cleaner"));
+				document.querySelectorAll('.homeowner-required').forEach(el => el.required = (role === "HomeOwner"));
 			}
 		</script>
 	</head>
@@ -36,15 +61,65 @@
 		<h2>New User Registration</h2>	<!-- The top title of the page -->
 		
 		<form action="/submit" method="POST" onsubmit="return checkPasswords();">
-			<label><b> Enter Username: </b></label>
+			
+			<hr><br>
+			
+			<!-- super class called users -->
+			<label><b> Enter Username / Email: </b></label>
 			<input type="text" name="username" id="username" placeholder="Enter your username" required /><br><br>
 			<label><b> Enter Password: </b></label>
 			<input type="password" name="password" id="pwd" placeholder="Enter your password" required /><br><br>
 			<label><b> Confirmed Password: </b></label>
 			<input type="password" name="confirmedPassword" id="cfmpwd" placeholder="Enter password again" required />
 			<span id="warningpwd" style="color: red; font-weight: bold;"> </span> <br><br>
-			<button type="submit">Register</button>&nbsp;&nbsp;
-			<button type="reset" onclick="resetSpan ()">Clear</button>
+			
+			<hr><br>
+			
+			<label><b>Your Full Name:</b></label>
+			<input type="text" id="name" name="name" required /><br><br>
+
+			<label><b>Enter your Age:</b></label>
+			<input type="number" id="age" name="age" required /><br><br>
+
+			<label><b>Mobile Number:</b></label>
+			<input type="tel" id="mobile" name="mobile" required /><br><br>
+
+			<label><b>Enter Location:</b></label>
+			<input type="text" id="location" name="location" required /><br><br>
+	
+			<!-- a radio button to choose between the roles -->
+			<label><b>Register as:</b></label>
+			<input type="radio" id="role" name="role" value="HomeOwner" required onclick="toggleRoleFields()" />
+			<label for="homeowner">HomeOwner</label> &nbsp;&nbsp;
+
+			<input type="radio" id="role" name="role" value="Cleaner" required onclick="toggleRoleFields()" />
+			<label for="cleaner">Cleaner</label><br><br>
+			
+			<hr><br>
+
+			<!-- HomeOwner Fields -->
+			<div id="homeowner-fields" class="role-section">
+			  <label><b>Occupation:</b></label>
+			  <input type="text" id="occupation" name="occupation" class="homeowner-required" /><br><br>
+
+			  <label><b>Enter Budget:</b></label>
+			  <input type="number" step="0.01" id="budget" name="budget" class="homeowner-required" /><br><br>
+			</div>
+
+			<!-- Cleaner Fields -->
+			<div id="cleaner-fields" class="role-section">
+				<label><b>Years of Experience:</b></label>
+				<input type="number" id="experience" name="experience" class="cleaner-required" /><br><br>
+	
+				<label><b>Pay per Hour ($):</b></label>
+				<input type="number" id="payPerHour" name="payPerHour" step="1" class="cleaner-required" /><br><br>
+	
+				<label><b>Services Offered (comma separated):</b></label>
+				<input type="text" id="services" name="services" class="cleaner-required" /><br><br>
+			</div>
+
+			<button type="submit">Register</button>&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="reset" onclick="resetForm ()">Clear</button><br><br>
 		</form>
 	</body>
 </html>
