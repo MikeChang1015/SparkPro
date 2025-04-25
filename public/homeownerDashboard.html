@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home-Owner Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .dashboard-container {
+      padding: 20px 40px;
+    }
+
+    .search-section {
+      margin-bottom: 30px;
+    }
+
+    .search-section input {
+      padding: 6px 10px;
+      margin-left: 10px;
+    }
+
+    .cleaner-card {
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      background-color: white;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .cleaner-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .cleaner-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .cleaner-details div {
+      width: 45%;
+    }
+
+    .shortlist-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .shortlist-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>Home-Owner Dashboard</h2>
+  </header>
+
+  <nav>
+    <div>Welcome back, <em>username</em>!</div>
+    <div class="nav-links">
+      <a href="#">History</a>
+      <a href="#">Your Profile</a>
+      <a href="#">Your Shortlist</a>
+    </div>
+  </nav>
+
+  <div class="dashboard-container">
+    <div class="search-section">
+      <label for="city-search">City name:</label>
+      <input type="text" id="city-search" placeholder="Search Cleaner">
+      <button>??</button>
+    </div>
+
+    <!-- Cleaner Card 1 -->
+    <div class="cleaner-card">
+      <div class="cleaner-title">Username #1</div>
+      <div class="cleaner-details">
+        <div><strong>Location:</strong> UserLocation</div>
+        <div><strong>Age:</strong> UserAge</div>
+        <div><strong>Year of Experience:</strong> UserExp</div>
+        <div><strong>Hourly rate:</strong> UserPayPerHour</div>
+        <div><strong>Service provided:</strong> UserServices</div>
+      </div>
+      <button class="shortlist-btn">Shortlist</button>
+    </div>
+
+    <!-- Cleaner Card 2 -->
+    <div class="cleaner-card">
+      <div class="cleaner-title">Username #2</div>
+      <div class="cleaner-details">
+        <div><strong>Location:</strong> UserLocation</div>
+        <div><strong>Age:</strong> UserAge</div>
+        <div><strong>Year of Experience:</strong> UserExp</div>
+        <div><strong>Hourly rate:</strong> UserPayPerHour</div>
+        <div><strong>Service provided:</strong> UserServices</div>
+      </div>
+      <button class="shortlist-btn">Shortlist</button>
+    </div>
+
+    <!-- Cleaner Card 3 -->
+    <div class="cleaner-card">
+      <div class="cleaner-title">Username #3</div>
+      <div class="cleaner-details">
+        <div><strong>Location:</strong> UserLocation</div>
+        <div><strong>Age:</strong> UserAge</div>
+        <div><strong>Year of Experience:</strong> UserExp</div>
+        <div><strong>Hourly rate:</strong> UserPayPerHour</div>
+        <div><strong>Service provided:</strong> UserServices</div>
+      </div>
+      <button class="shortlist-btn">Shortlist</button>
+    </div>
+
+  </div>
+
+</body>
+</html>
